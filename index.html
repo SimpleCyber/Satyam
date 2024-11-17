@@ -52,8 +52,8 @@
         padding: 0.5rem;
       }
 
-      span{
-        color:rgb(82, 249, 79)  ;
+      span {
+        color: rgb(82, 249, 79);
       }
 
       .profile {
@@ -128,12 +128,34 @@
       .techstack {
         display: flex;
         gap: 0.81rem;
-        font-size: larger; 
+        font-size: larger;
         color: rgb(132, 132, 132);
         margin-bottom: 0.3rem;
       }
-      .techstack i:hover{
-        color: rgb(183, 183, 44);
+      .techstack .fa-html5:hover,
+      .techstack .fa-sailboat:hover {
+        color: tomato;
+        font-size: x-large;
+      }
+
+      .techstack .fa-js:hover,
+      .techstack .fa-fire:hover,
+      .techstack .fa-video:hover {
+        color: yellow;
+        font-size: x-large;
+      }
+
+      .techstack .fa-google:hover,
+      .techstack .fa-envira:hover {
+        color: green;
+        font-size: x-large;
+      }
+
+      .techstack .fa-react:hover,
+      .techstack .fa-python:hover,
+      .techstack .fa-cloud:hover,
+      .techstack .fa-css3-alt:hover {
+        color: skyblue;
         font-size: x-large;
       }
 
@@ -186,45 +208,60 @@
       }
 
       @media screen and (min-width: 1000px) {
-        .project_details{
-            margin-top: .5rem;
+        .project_details {
+          margin-top: 0.5rem;
         }
         .project_image img {
-            border: 5px ;
-            margin-top: .51rem;
+          border: 5px;
+          margin-top: 0.51rem;
         }
       }
 
-
-      @media screen and (max-width: 500px){
-        main{
-            display: flex;
-            flex-direction: column;
+      @media screen and (max-width: 500px) {
+        main {
+          display: flex;
+          flex-direction: column;
         }
-        .acive_pic img{
-            width: 9rem;
+        .acive_pic img {
+          width: 9rem;
         }
 
-        .profile{
-            font-size: .9rem;
+        .profile {
+          font-size: 0.9rem;
         }
 
         .links {
-            margin-top: 0;
+          margin-top: 0;
         }
 
-        .profile_details{
-            margin-top: .2rem;
+        .profile_details {
+          margin-top: 0.2rem;
         }
 
-        header{
-            gap: .8rem;
-            font-size: 1rem;
-            justify-content: center;
-            font-weight: 600;
+        header {
+          gap: 0.8rem;
+          font-size: 1rem;
+          justify-content: center;
+          font-weight: 600;
         }
       }
 
+      .links i {
+        color: rgb(132, 132, 132);
+      }
+      .fa-github:hover {
+        color: aliceblue;
+      }
+      .fa-linkedin:hover {
+        color: rgb(0, 110, 255);
+        background-color: aliceblue;
+      }
+      .fa-youtube:hover {
+        color: tomato;
+      }
+      .fa-code:hover {
+        color: orange;
+      }
     </style>
   </head>
   <body>
@@ -246,7 +283,8 @@
           <div class="Course"><span>Department:</span> Computer science</div>
           <div class="year"><span>Year:</span> 3rd</div>
           <div class="college">
-            <span>College:</span> G.H.Raisoni College of Engineering and Management
+            <span>College:</span> G.H.Raisoni College of Engineering and
+            Management
           </div>
           <div class="links">
             <div class="github">
@@ -295,70 +333,75 @@
           </div>
         </div>
 
-
         <div class="project1">
-            <div class="project_image">
-              <a
-                  href="https://github.com/SimpleCyber/E-Waste-Clasifier
+          <div class="project_image">
+            <a
+              href="https://github.com/SimpleCyber/E-Waste-Clasifier
                           "
-                  ><img src="./assets/wasteclass.png" alt="" /></a>
+              ><img src="./assets/wasteclass.png" alt=""
+            /></a>
+          </div>
+          <div class="project_details">
+            <div class="header">E-waste Classier</div>
+            <div class="details">
+              Distinguish between different types of E- Waste.
             </div>
-            <div class="project_details">
-              <div class="header">E-waste Classier</div>
-              <div class="details">Distinguish between different types of E- Waste.</div>
-              <div class="techstack">
-                <i class="fa-brands fa-python"></i>
-                <i class="fa-solid fa-sailboat"></i>
-              </div>
-  
+            <div class="techstack">
+              <i class="fa-brands fa-python"></i>
+              <i class="fa-solid fa-sailboat"></i>
             </div>
           </div>
+        </div>
 
         <div class="project1">
           <div class="project_image">
-            <a href="https://simplecyber.github.io/Edulite/"><img src="./assets/eduquality.png" alt="" /></a>
+            <a href="https://simplecyber.github.io/Edulite/"
+              ><img src="./assets/eduquality.png" alt=""
+            /></a>
           </div>
           <div class="project_details">
             <div class="header">Edu-Quality</div>
-            <div class="details">Educational platform for children's with text summarizer bot. </div>
+            <div class="details">
+              Educational platform for children's with text summarizer bot.
+            </div>
             <div class="techstack">
               <i class="fa-brands fa-html5"></i>
               <i class="fa-brands fa-js"></i>
               <i class="fa-brands fa-python"></i>
               <i class="fa-solid fa-cloud"></i>
             </div>
-
           </div>
         </div>
 
-        
-
         <div class="project1">
           <div class="project_image">
-            <a href="https://github.com/SimpleCyber/Aora"><img src="./assets/aora.png" alt="" /></a>
+            <a href="https://github.com/SimpleCyber/Aora"
+              ><img src="./assets/aora.png" alt=""
+            /></a>
           </div>
           <div class="project_details">
             <div class="header">Aora : Video sharing platform</div>
-            <div class="details">Watch and share videos here. </div>
+            <div class="details">Watch and share videos here.</div>
             <div class="techstack">
               <i class="fa-brands fa-react"></i>
               <i class="fa-brands fa-envira"></i>
             </div>
-
           </div>
         </div>
 
         <div class="project1">
           <div class="project_image">
             <a
-                href="https://github.com/SimpleCyber/Key-Logger
+              href="https://github.com/SimpleCyber/Key-Logger
                         "
-                ><img src="./assets/keylogger.png" alt="" /></a
-                >
+              ><img src="./assets/keylogger.png" alt=""
+            /></a>
           </div>
           <div class="project_details">
             <div class="header">Key Logger : Chrome extension</div>
-            <div class="details">Keep tracks of each keyword on the browser</div>
+            <div class="details">
+              Keep tracks of each keyword on the browser
+            </div>
             <div class="techstack">
               <i class="fa-brands fa-html5"></i>
               <i class="fa-brands fa-css3-alt"></i>
