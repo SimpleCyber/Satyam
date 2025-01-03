@@ -18,7 +18,6 @@
         background-color: rgb(34, 34, 34);
         /* color: aliceblue; */
         font-family: 'Courier New', Courier, monospace;
-
       }
 
       body {
@@ -50,7 +49,6 @@
       }
 
       main {
-        display: grid;
         gap: 1rem;
         padding: 0.5rem;
       }
@@ -94,15 +92,13 @@
       }
 
       .projects {
-        grid-row-start: 1;
-        grid-row-end: 5;
-
-        grid-column-start: 2;
-        grid-column-end: 3;
-
+        
         display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+
+        gap: 3.5rem;
 
         border: 5px;
         margin-top: -1rem;
@@ -120,6 +116,8 @@
 
       .project1 {
         display: flex;
+        flex-direction: column;
+        max-width: 20rem;
       }
 
       .details {
@@ -258,17 +256,9 @@
           font-size: 1rem;
           font-weight: 600;
         }
-        .project_image img {
-          width: 9rem;
-          height: 5rem;
-        }
 
-        .details{
-          display: none;
-        }
-        .link{
-          color:rgb(177, 177, 177);
-          font-weight: bold;
+        .project_image img {
+          width: 18rem;
         }
       }
 
@@ -295,71 +285,31 @@
     <header>
       <a href="./index.html"><div class="home" >Home</div></a>
       <a href="./projects.html"><div class="project">Projects</div></a>
-      <!-- <a href="./documents.html"><div class="Docuemnts">Documents</div></a> -->
-
-      <a href="https://www.linkedin.com/in/dearcoder-satyam/overlay/1735564940400/single-media-viewer?type=DOCUMENT&profileId=ACoAAD98s40Bh5DueCA6qczaJWhhG6UxnOn0Fzw&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BK69LdKd7SjmxUp%2Flrih0EQ%3D%3D"><div class="project">Resume</div></a>
-
-      
       
       <i class="fa-solid fa-sun"></i>
     </header>
     <hr />
     <main>
-      <div class="profile">
-        <div class="photo">
-          <img src="./assets/profile pic.jpg" alt="" />
-        </div>
-        <div class="profile_details">
-          <div class="name"><span>Name:</span> Satyam Yadav</div>
-          <div class="Course"><span>Department:</span> Computer science</div>
-          <div class="year"><span>Year:</span> 3rd</div>
-          <div class="college">
-            <span>College:</span> G.H.Raisoni College of Engineering and
-            Management
-          </div>
-          <div class="links">
-            <div class="github">
-              <a href="https://github.com/SimpleCyber"
-                ><i class="fa-brands fa-github"></i
-              ></a>
-            </div>
-            <div class="linkedin">
-              <a href="https://www.linkedin.com/in/dearcoder-satyam"
-                ><i class="fa-brands fa-linkedin"></i
-              ></a>
-            </div>
-            <div class="youtube">
-              <a href="http://www.youtube.com/@factyuniverse"
-                ><i class="fa-brands fa-youtube"></i
-              ></a>
-            </div>
-            <div class="leetcode">
-              <a href="https://leetcode.com/u/pkc5uOVzbM/"
-                ><i class="fa-solid fa-code"></i
-              ></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="projects">
-        <h1 class="heading">Projects</h1>
 
+        <h1 class="heading">Documents</h1>
+ 
+
+      <div class="projects">
+        
 
 
         <!-- Imposter -->
         <div class="project1">
           <div class="project_image">
-            <a href="https://imposter-r3q6.onrender.com/"><img src="./assets/imposter.png" alt=""
+            <a href="https://imposter-r3q6.onrender.com/"
+              ><img src="./assets/imposter.png" alt=""
             /></a>
           </div>
           <div class="project_details">
             <div class="header">Imposter</div>
             <div class="details">
-              A platform to detect the fake social media platforms <br>
-              and report them.
+              A platform to detect the fake social media platforms and report them.
             </div>
-            <a href="https://imposter-r3q6.onrender.com/"
-            style="margin-bottom: .5rem;"><span class="link" >Project Link</span></a>
             <div class="techstack">
               <i class="fa-brands fa-html5"></i>
               <i class="fa-brands fa-js"></i>
@@ -383,8 +333,6 @@
             <div class="details">
               A Django-based blogging platform integrated with Firebase for storage.
             </div>
-            <a href="https://bloggersatyam.onrender.com/"
-            style="margin-bottom: .5rem;"><span class="link" >Project Link</span></a>
             <div class="techstack">
               <i class="fa-brands fa-html5"></i>
               <i class="fa-brands fa-js"></i>
@@ -397,139 +345,14 @@
 
 
 
-        <!-- Edu Quality -->
-        <div class="project1">
-          <div class="project_image">
-            <a href="https://simplecyber.github.io/Edulite/"
-              ><img src="./assets/eduquality.png" alt=""
-            /></a>
-          </div>
-          <div class="project_details">
-            <div class="header">Edu-Quality</div>
-            <div class="details">
-              Educational platform for children's with text summarizer bot.
-            </div>
-            <a href="https://simplecyber.github.io/Edulite/"
-            style="margin-bottom: .5rem;"><span class="link" >Project Link</span></a>
-            <div class="techstack">
-              <i class="fa-brands fa-html5"></i>
-              <i class="fa-brands fa-js"></i>
-              <i class="fa-brands fa-python"></i>
-              <i class="fa-solid fa-cloud"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Aora -->
-        <div class="project1">
-          <div class="project_image" >
-            <a href="https://github.com/SimpleCyber/Aora"
-              ><img src="./assets/aora.png" alt=""
-            /></a>
-          </div>
-
-
-          <div class="project_details">
-            <div class="header">Aora : Video sharing platform</div>
-            <div class="details">Mobile application : Watch and share videos here.</div>
-
-            <a href="https://github.com/SimpleCyber/Aora"
-            style="margin-bottom: .5rem;"><span class="link" >Project Link</span></a>
-            <div class="techstack">
-              <i class="fa-brands fa-react"></i>
-              <i class="fa-brands fa-envira"></i>
-            </div>
-          </div>
-        </div>
-
-
+        
 
 
 
 
 
       </div>
-      <div class="achive">
-        <h1 class="heading">Achievements</h1>
-
-        <div class="achivements">
-          <div class="achive1">
-            <div class="acive_pic">
-              <img src="./assets/sih2024.jpg" alt="" />
-            </div>
-            <div class="achive_details">SIH 2024 Winner</div>
-          </div>
-
-
-          
-
-          <div class="achive1">
-            <div class="acive_pic">
-              <img src="./assets/game development.jpg" alt="" />
-            </div>
-            <div class="achive_details">Game Dev 1st</div>
-          </div>
-
-
-          <div class="achive1">
-            <div class="acive_pic">
-              <img src="./assets/sspuu.jpg" alt="" />
-            </div>
-            <div class="achive_details">Tantar 2023 Winner</div>
-          </div>
-
-
-
-
-          <div class="achive1">
-            <div class="acive_pic">
-              <img src="./assets/hackfest.jpg" alt="" />
-            </div>
-            <div class="achive_details">Hackfest</div>
-          </div>
-
-
-          <div class="achive1">
-            <div class="acive_pic">
-              <img src="./assets/sih 2023.jpg" alt="" />
-            </div>
-            <div class="achive_details">
-              Sih 2023 
-              finalist
-            </div>
-          </div>
-
-
-          <div class="achive1">
-            <div class="acive_pic">
-              <img src="./assets/code vista.jpg" alt="" />
-            </div>
-            <div class="achive_details">Code Vista 2023 <br>  Winner</div>
-          </div>
-
-          
-
-          <div class="achive1">
-            <div class="acive_pic">
-              <img src="./assets/peer councellor.jpg" alt="" />
-            </div>
-            <div class="achive_details">Peer councellor</div>
-          </div>
-
-          <div class="achive1">
-            <div class="acive_pic">
-              <img src="./assets/Pitch Deck.jpg" alt="" />
-            </div>
-            <div class="achive_details">Pitch Deck</div>
-          </div>
-
-
-          
-
-
-        </div>
-      </div>
-
+     
 
     </main>
   </body>
