@@ -14,23 +14,44 @@
     />
 
     <style>
+      :root {
+        /* Dark theme variables */
+        --bg-color: rgb(34, 34, 34);
+        --text-color: aliceblue;
+        --accent-color: rgb(82, 249, 79);
+        --secondary-text: rgb(132, 132, 132);
+        --link-hover: rgb(128, 242, 128);
+        --text-header: rgb(82, 249, 79);
+        --header: rgb(47, 255, 57);
+      }
+
+      /* Light theme variables */
+      [data-theme="light"] {
+        --bg-color: whitesmoke;
+        --text-color: #333333;
+        --accent-color: #2ea44f;
+        --secondary-text: #666666;
+        --link-hover: #1a7f37;
+        --text-header: rgb(15, 144, 13);
+        --header: green;
+      }
+
       * {
-        background-color: rgb(34, 34, 34);
-        /* color: aliceblue; */
-        font-family: 'Courier New', Courier, monospace;
+        background-color: var(--bg-color);
+        font-family: "Courier New", Courier, monospace;
+        font-weight: bold;
       }
 
       body {
-        color: aliceblue;
+        color: var(--text-color);
       }
       a {
         text-decoration: none;
-        color: aliceblue;
+        color: var(--text-color);
       }
 
       a:hover {
-        color: rgb(128, 242, 128);
-        font-size: larger;
+        color: var(--header);
       }
 
       header {
@@ -54,7 +75,7 @@
       }
 
       span {
-        color: rgb(82, 249, 79);
+        color: var(--link-hover);
       }
 
       .profile {
@@ -92,11 +113,9 @@
       }
 
       .projects {
-        
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-
 
         gap: 3.5rem;
 
@@ -107,7 +126,7 @@
       .header {
         font-size: 1rem;
         font-weight: bold;
-        color: rgb(82, 249, 79);
+        color: var(--text-header);
       }
 
       .projects .heading {
@@ -139,15 +158,13 @@
         font-size: x-large;
       }
 
-      .techstack .fa-pepper-hot:hover{
+      .techstack .fa-pepper-hot:hover {
         color: aliceblue;
         font-size: x-large;
-        
       }
-      .techstack .fa-pepper-hot{
+      .techstack .fa-pepper-hot {
         transform: scaleX(-1);
       }
-
 
       .techstack .fa-js:hover,
       .techstack .fa-fire:hover,
@@ -166,8 +183,7 @@
       .techstack .fa-react:hover,
       .techstack .fa-python:hover,
       .techstack .fa-cloud:hover,
-      .techstack .fa-css3-alt:hover
-       {
+      .techstack .fa-css3-alt:hover {
         color: skyblue;
         font-size: x-large;
       }
@@ -278,26 +294,21 @@
       .fa-code:hover {
         color: orange;
       }
-
     </style>
   </head>
   <body>
     <header>
-      <a href="./index.html"><div class="home" >Home</div></a>
+      <a href="./index.html"><div class="home">Home</div></a>
       <a href="./projects.html"><div class="project">Projects</div></a>
-      <a href="https://www.linkedin.com/in/dearcoder-satyam/overlay/1735564940400/single-media-viewer?type=DOCUMENT&profileId=ACoAAD98s40Bh5DueCA6qczaJWhhG6UxnOn0Fzw&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BK69LdKd7SjmxUp%2Flrih0EQ%3D%3D"><div class="project">Resume</div></a>      
-      <i class="fa-solid fa-sun"></i>
+      <a href="./assets/satyam1.pdf"><div class="project">Resume</div></a>
+
+      <i class="fa-solid fa-sun" id="theme-toggle" style="cursor: pointer"></i>
     </header>
     <hr />
     <main>
-
-        <h1 class="heading">Projects</h1>
- 
+      <h1 class="heading">Projects</h1>
 
       <div class="projects">
-        
-
-
         <!-- Imposter -->
         <div class="project1">
           <div class="project_image">
@@ -308,7 +319,8 @@
           <div class="project_details">
             <div class="header">Imposter</div>
             <div class="details">
-              A platform to detect the fake social media platforms and report them.
+              A platform to detect the fake social media platforms and report
+              them.
             </div>
             <div class="techstack">
               <i class="fa-brands fa-html5"></i>
@@ -319,19 +331,21 @@
           </div>
         </div>
 
-
-
         <!-- Blogging website -->
         <div class="project1">
-          <div class="project_image" >
+          <div class="project_image">
             <a href="https://bloggersatyam.onrender.com/"
-              ><img src="./assets/blogging.png" alt="" style="border: 3px solid rgb(81, 81, 81); border-radius: 5px;"
+              ><img
+                src="./assets/blogging.png"
+                alt=""
+                style="border: 3px solid rgb(81, 81, 81); border-radius: 5px"
             /></a>
           </div>
           <div class="project_details">
             <div class="header">Blogging website</div>
             <div class="details">
-              A Django-based blogging platform integrated with Firebase for storage.
+              A Django-based blogging platform integrated with Firebase for
+              storage.
             </div>
             <div class="techstack">
               <i class="fa-brands fa-html5"></i>
@@ -341,9 +355,6 @@
             </div>
           </div>
         </div>
-
-
-
 
         <!-- Edu Quality -->
         <div class="project1">
@@ -368,14 +379,16 @@
 
         <!-- Aora -->
         <div class="project1">
-          <div class="project_image" >
+          <div class="project_image">
             <a href="https://github.com/SimpleCyber/Aora"
               ><img src="./assets/aora.png" alt=""
             /></a>
           </div>
           <div class="project_details">
             <div class="header">Aora : Video sharing platform</div>
-            <div class="details">Mobile application : Watch and share videos here.</div>
+            <div class="details">
+              Mobile application : Watch and share videos here.
+            </div>
             <div class="techstack">
               <i class="fa-brands fa-react"></i>
               <i class="fa-brands fa-envira"></i>
@@ -383,109 +396,117 @@
           </div>
         </div>
 
+        <!-- Cogno -->
+        <div class="project1">
+          <div class="project_image">
+            <a href="https://cogno-solutions.vercel.app/"
+              ><img src="./assets/cognosolution.png" alt=""
+            /></a>
+          </div>
+          <div class="project_details">
+            <div class="header">Cognitive Disability Management system</div>
+            <div class="details">Empowering Cognitive Well-being.</div>
+            <div class="techstack">
+              <i class="fa-brands fa-html5"></i>
+              <i class="fa-brands fa-js"></i>
+              <i class="fa-solid fa-fire"></i>
+              <i class="fa-brands fa-google"></i>
+              <i class="fa-solid fa-video"></i>
+            </div>
+          </div>
+        </div>
 
- <!-- Cogno -->
- <div class="project1">
-    <div class="project_image">
-      <a
-        href="https://cogno-solutions.vercel.app/"
-        ><img src="./assets/cognosolution.png" alt=""
-      /></a>
-    </div>
-    <div class="project_details">
-      <div class="header">Cognitive Disability Management system</div>
-      <div class="details">Empowering Cognitive Well-being.</div>
-      <div class="techstack">
-        <i class="fa-brands fa-html5"></i>
-        <i class="fa-brands fa-js"></i>
-        <i class="fa-solid fa-fire"></i>
-        <i class="fa-brands fa-google"></i>
-        <i class="fa-solid fa-video"></i>
-      </div>
-    </div>
-  </div>
-
-
-
-  <!-- E waste Classifier -->
-  <div class="project1">
-    <div class="project_image">
-      <a
-        href="https://github.com/SimpleCyber/E-Waste-Clasifier
+        <!-- E waste Classifier -->
+        <div class="project1">
+          <div class="project_image">
+            <a
+              href="https://github.com/SimpleCyber/E-Waste-Clasifier
                     "
-        ><img src="./assets/wasteclass.png" alt=""
-      /></a>
-    </div>
-    <div class="project_details">
-      <div class="header">E-waste Classier</div>
-      <div class="details">
-        Distinguish between different types of E- Waste.
-      </div>
-      <div class="techstack">
-        <i class="fa-brands fa-python"></i>
-        <i class="fa-solid fa-sailboat"></i>
-      </div>
-    </div>
-  </div>
+              ><img src="./assets/wasteclass.png" alt=""
+            /></a>
+          </div>
+          <div class="project_details">
+            <div class="header">E-waste Classier</div>
+            <div class="details">
+              Distinguish between different types of E- Waste.
+            </div>
+            <div class="techstack">
+              <i class="fa-brands fa-python"></i>
+              <i class="fa-solid fa-sailboat"></i>
+            </div>
+          </div>
+        </div>
 
-
-
-
-  <!-- Key logger -->
-  <div class="project1">
-    <div class="project_image">
-      <a
-        href="https://github.com/SimpleCyber/Key-Logger
+        <!-- Key logger -->
+        <div class="project1">
+          <div class="project_image">
+            <a
+              href="https://github.com/SimpleCyber/Key-Logger
                   "
-        ><img src="./assets/keylogger.png" alt=""
-      /></a>
-    </div>
-    <div class="project_details">
-      <div class="header">Key Logger : Chrome extension</div>
-      <div class="details">
-        Keep tracks of each keyword on the browser
+              ><img src="./assets/keylogger.png" alt=""
+            /></a>
+          </div>
+          <div class="project_details">
+            <div class="header">Key Logger : Chrome extension</div>
+            <div class="details">
+              Keep tracks of each keyword on the browser
+            </div>
+            <div class="techstack">
+              <i class="fa-brands fa-html5"></i>
+              <i class="fa-brands fa-css3-alt"></i>
+              <i class="fa-brands fa-js"></i>
+              <i class="fa-brands fa-google"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Django Starter Kit -->
+        <div class="project1">
+          <div class="project_image">
+            <a href="https://github.com/SimpleCyber/Aora"
+              ><img src="./assets/django.png" alt=""
+            /></a>
+          </div>
+          <div class="project_details">
+            <div class="header">Django Starter Kit</div>
+            <div class="details">
+              A Django starter project with pre-configured index page, login
+              system.
+            </div>
+            <div class="techstack">
+              <i class="fa-brands fa-html5"></i>
+              <i class="fa-brands fa-js"></i>
+              <i class="fa-brands fa-python"></i>
+              <i class="dj"><strong>dj</strong></i>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="techstack">
-        <i class="fa-brands fa-html5"></i>
-        <i class="fa-brands fa-css3-alt"></i>
-        <i class="fa-brands fa-js"></i>
-        <i class="fa-brands fa-google"></i>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-  <!-- Django Starter Kit -->
-  <div class="project1">
-    <div class="project_image" >
-      <a href="https://github.com/SimpleCyber/Aora"
-        ><img src="./assets/django.png" alt=""
-      /></a>
-    </div>
-    <div class="project_details">
-      <div class="header">Django Starter Kit</div>
-      <div class="details">A Django starter project with pre-configured index page, login system.</div>
-      <div class="techstack">
-        <i class="fa-brands fa-html5"></i>
-        <i class="fa-brands fa-js"></i>
-        <i class="fa-brands fa-python"></i>
-        <i class="dj"><strong>dj</strong></i>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-
-
-      </div>
-     
-
     </main>
+    <script>
+      const themeToggle = document.getElementById('theme-toggle');
+      
+      // Check for saved theme preference or default to dark
+      const currentTheme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      
+      // Update icon based on current theme
+      if (currentTheme === 'light') {
+        themeToggle.classList.replace('fa-sun', 'fa-moon');
+      }
+      
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        // Toggle icon
+        themeToggle.classList.toggle('fa-sun');
+        themeToggle.classList.toggle('fa-moon');
+        
+        // Update theme
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      });
+    </script>
   </body>
 </html>
