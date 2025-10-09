@@ -21,9 +21,9 @@
         --text-color: aliceblue;
         --accent-color: rgb(82, 249, 79);
         --secondary-text: rgb(132, 132, 132);
-        --link-hover: rgb(128, 242, 128);
-        --text-header: rgb(82, 249, 79);
-        --header: rgb(47, 255, 57);
+        --link-hover: rgb(239, 57, 25);
+        --text-header: rgb(249, 113, 79);
+        --header: rgb(255, 61, 47);
       }
 
       /* Light theme variables */
@@ -62,7 +62,7 @@
         padding: 1rem;
       }
       header:hover {
-        color: linear-gradient(to left, lightgreen, green);
+        color: linear-gradient(to left, rgb(220, 106, 13), rgb(128, 58, 0));
       }
 
       hr {
@@ -90,15 +90,18 @@
         display: flex;
       }
 
-      .photo img {
-        width: 9rem;
-        height: 11rem;
-      }
+      .photo {
+  width: 150px;       /* Set desired width */
+  height: 160px;      /* Set desired height */
+  overflow: hidden;   /* Hide the overflowing parts of the image */
+  display: inline-block;
+  border-radius: 5%;
+}
 
-      .profile img {
-        border: 0px;
-        border-radius: 0.51rem;
-      }
+.photo img {
+  width: 100%;        /* Ensure image fills the container */
+  object-fit: cover;  /* Crop and maintain aspect ratio */
+}
 
       .profile_details {
         display: flex;
@@ -314,7 +317,7 @@
       <a href="./index.html"><div class="home">Home</div></a>
       <a href="./projects.html"><div class="project">Projects</div></a>
 
-      <a href="./assets/SatyamResume.pdf"><div class="project">Resume</div></a>
+      <a href="./assets/SatyamYadav.pdf"><div class="project">Resume</div></a>
 
       <i class="fa-solid fa-sun" id="theme-toggle" style="cursor: pointer"></i>
     </header>
@@ -327,7 +330,7 @@
         <div class="profile_details">
           <div class="name"><span>Name:</span> Satyam Yadav</div>
           <div class="Course"><span>Department:</span> Computer science</div>
-          <div class="year"><span>Year:</span> 3rd</div>
+          <div class="year"><span>Year:</span> Final Year</div>
           <div class="college">
             <span>College:</span> G.H.Raisoni College of Engineering and
             Management
@@ -353,6 +356,11 @@
               <a href="https://leetcode.com/u/yadav-satyam/"
                 ><i class="fa-solid fa-code"></i
               ></a>
+            </div>
+
+            <div class="leetcode">
+              <a href="https://x.com/satyam_yadav_04/"
+                ><i class="fa-brands fa-twitter"></i></a>
             </div>
           </div>
         </div>
