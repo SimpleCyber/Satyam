@@ -1,572 +1,419 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="image.png" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Satyam Yadav — Portfolio</title>
+  <meta name="description" content="I build intelligent web & mobile apps, automation systems, and AI tools — from prototypes to production." />
 
-    <title>Satyam Portfolio</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <style>
-      :root {
-        /* Dark theme variables */
-        --bg-color: rgb(34, 34, 34);
-        --text-color: aliceblue;
-        --accent-color: rgb(82, 249, 79);
-        --secondary-text: rgb(132, 132, 132);
-        --link-hover: rgb(239, 57, 25);
-        --text-header: rgb(249, 113, 79);
-        --header: rgb(255, 61, 47);
-      }
+  <!-- Font Awesome (for UI bits) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-aGv6sPU2GyVz1QW5FyArsK5wF3Sl2bZ2E5ZzT5bAGyQqRmL7F5IejR8T4cAxh6j7+Zr5TnDEnH0AAvGJdZg9Rw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 
-      /* Light theme variables */
-      [data-theme="light"] {
-        --bg-color: whitesmoke;
-        --text-color: #333333;
-        --accent-color: #2ea44f;
-        --secondary-text: #666666;
-        --link-hover: #1a7f37;
-        --text-header: rgb(15, 144, 13);
-        --header: green;
-      }
+  <style>
+    :root{
+      --bg: #ffffff;
+      --muted: #6b7280;
+      --card: #f8fafc;
+      --accent: #0f172a;
+    }
+    [data-theme="dark"]{
+      --bg: #071023;
+      --muted: #94a3b8;
+      --card: #0b1220;
+      --accent: #e6eefc;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--accent); font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
 
-      * {
-        background-color: var(--bg-color);
-        font-family: "Courier New", Courier, monospace;
-        font-weight: bold;
-      }
+    /* small helpers */
+    .float-icon { transition: transform .22s ease, box-shadow .22s ease; }
+    .float-icon:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 12px 30px rgba(2,6,23,.08); }
+    .reveal { opacity:0; transform: translateY(14px); transition: all .52s cubic-bezier(.2,.9,.2,1); }
+    .reveal.show { opacity:1; transform: none; }
+    .rot-l { transform: rotate(-6deg) translateX(8px); }
+    .rot-r-sm { transform: rotate(3deg); }
+    .rot-l-md { transform: rotate(-6deg) translateX(-16px); }
+    .rot-r-md { transform: rotate(6deg) translateX(-32px); }
+    .app-icon:hover { transform: rotate(0deg) translateX(0) !important; }
+    .card { background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.94)); border: 1px solid rgba(15,23,42,0.04); }
+    [data-theme="dark"] .card { background: linear-gradient(180deg, rgba(12,14,25,0.75), rgba(12,14,25,0.9)); border: 1px solid rgba(255,255,255,0.04); }
+    /* floating toggle */
+    .theme-toggle {
+      position: fixed;
+      right: 20px;
+      bottom: 22px;
+      z-index: 60;
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 8px 20px rgba(2,6,23,.08);
+      cursor: pointer;
+      background: var(--card);
+      border: 1px solid rgba(15,23,42,0.05);
+      backdrop-filter: blur(6px);
+    }
+  </style>
+</head>
+<body class="antialiased" data-theme="light">
 
-      body {
-        color: var(--text-color);
-      }
-      a {
-        text-decoration: none;
-        color: var(--text-color);
-      }
+  <main class="max-w-4xl mx-auto px-5 md:px-8 py-28">
 
-      a:hover {
-        color: var(--header);
-      }
+    <!-- HERO (centered) -->
+    <section id="home" class="text-center mx-auto max-w-3xl mb-20 reveal">
+      <img src="https://github.com/user-attachments/assets/5954c508-cb31-4f6a-9a5f-ca6238d25102"
+           alt="Satyam Yadav"
+           class="mx-auto w-28 h-28 rounded-full object-cover shadow-lg mb-6"/>
 
-      header {
-        display: flex;
-        gap: 1.5rem;
-        justify-content: right;
-        padding: 1rem;
-      }
-      header:hover {
-        color: linear-gradient(to left, rgb(220, 106, 13), rgb(128, 58, 0));
-      }
+      <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">
+        Hi, I'm <span class="inline-block">SATYAM YADAV</span> 👋
+      </h1>
 
-      hr {
-        margin-top: -5px;
-        color: white;
-        font-weight: bold;
-      }
+      <p class="mt-4 text-gray-600 max-w-2xl mx-auto text-lg">
+        I build intelligent web & mobile apps, automation systems, and AI tools — from prototypes to production.
+      </p>
 
-      main {
-        display: grid;
-        gap: 1rem;
-        padding: 0.5rem;
-      }
-
-      span {
-        color: var(--accent-color);
-      }
-
-      .profile {
-        grid-row-start: 1;
-        grid-row-end: 3;
-        grid-column-start: 1;
-        grid-column-end: 2;
-
-        display: flex;
-      }
-
-      .photo {
-  width: 150px;       /* Set desired width */
-  height: 160px;      /* Set desired height */
-  overflow: hidden;   /* Hide the overflowing parts of the image */
-  display: inline-block;
-  border-radius: 5%;
-}
-
-.photo img {
-  width: 100%;        /* Ensure image fills the container */
-  object-fit: cover;  /* Crop and maintain aspect ratio */
-}
-
-      .profile_details {
-        display: flex;
-        flex-direction: column;
-        gap: 0.41rem;
-        margin-left: 0.5rem;
-        margin-top: 0.5rem;
-      }
-
-      .links {
-        display: flex;
-        gap: 1rem;
-        font-size: larger;
-        margin-top: 0.61rem;
-      }
-
-      .projects {
-        grid-row-start: 1;
-        grid-row-end: 5;
-
-        grid-column-start: 2;
-        grid-column-end: 3;
-
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-
-        border: 5px;
-        margin-top: -1rem;
-      }
-
-      .header {
-        font-size: 1rem;
-        font-weight: bold;
-        color: var(--text-header);
-      }
-
-      .projects .heading {
-        margin-bottom: 4px;
-      }
-
-      .project1 {
-        display: flex;
-      }
-
-      .details {
-        font-size: small;
-        margin-top: 0.4rem;
-        margin-bottom: 0.6rem;
-      }
-
-      .techstack {
-        display: flex;
-        gap: 0.81rem;
-        font-size: larger;
-        color: rgb(132, 132, 132);
-        margin-bottom: 0.3rem;
-      }
-      .techstack .fa-html5:hover,
-      .techstack .fa-sailboat:hover {
-        color: tomato;
-        font-size: x-large;
-      }
-
-      .techstack .fa-pepper-hot:hover {
-        color: aliceblue;
-        font-size: x-large;
-      }
-      .techstack .fa-pepper-hot {
-        transform: scaleX(-1);
-      }
-
-      .techstack .fa-js:hover,
-      .techstack .fa-fire:hover,
-      .techstack .fa-video:hover {
-        color: yellow;
-        font-size: x-large;
-      }
-
-      .techstack .fa-google:hover,
-      .techstack .fa-envira:hover,
-      .techstack .dj:hover {
-        color: green;
-        font-size: x-large;
-      }
-
-      .techstack .fa-react:hover,
-      .techstack .fa-python:hover,
-      .techstack .fa-cloud:hover,
-      .techstack .fa-css3-alt:hover {
-        color: skyblue;
-        font-size: x-large;
-      }
-
-      .achive {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .achivements {
-        grid-row-start: 3;
-        grid-row-end: 5;
-
-        grid-column-start: 1;
-        grid-column-end: 2;
-
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        border: 0px solid;
-      }
-
-      .achive1 {
-        text-align: center;
-        font-size: small;
-      }
-
-      .project_details {
-        display: flex;
-        flex-direction: column;
-        margin-left: 0.5rem;
-      }
-
-      .acive_pic img,
-      .project_image img {
-        width: 8rem;
-        height: 8rem;
-        object-fit: cover;
-
-        border-radius: 0.6rem;
-      }
-
-      .project_image img {
-        width: 12rem;
-      }
-
-      @media screen and (min-width: 800px) {
-        .project_image img {
-          width: 18rem;
-        }
-      }
-
-      @media screen and (min-width: 1000px) {
-        .project_details {
-          margin-top: 0.5rem;
-        }
-        .project_image img {
-          border: 5px;
-          margin-top: 0.51rem;
-        }
-      }
-
-      @media screen and (max-width: 500px) {
-        main {
-          display: flex;
-          flex-direction: column;
-        }
-        .acive_pic img {
-          width: 9rem;
-        }
-
-        .profile {
-          font-size: 0.9rem;
-        }
-
-        .links {
-          margin-top: 0;
-        }
-
-        .profile_details {
-          margin-top: 0.2rem;
-        }
-
-        header {
-          gap: 0.8rem;
-          font-size: 1rem;
-          font-weight: 600;
-        }
-        .project_image img {
-          width: 9rem;
-          height: 5rem;
-        }
-
-        .details {
-          display: none;
-        }
-        .link {
-          color: rgb(177, 177, 177);
-          font-weight: bold;
-        }
-      }
-
-      .links i {
-        color: var(--secondary-text);
-      }
-      .fa-github:hover {
-        color: rgb(71, 71, 71);
-      }
-      .fa-linkedin:hover {
-        color: rgb(0, 110, 255);
-        background-color: aliceblue;
-      }
-      .fa-youtube:hover {
-        color: tomato;
-      }
-      .fa-code:hover {
-        color: orange;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <a href="./index.html"><div class="home">Home</div></a>
-      <a href="./projects.html"><div class="project">Projects</div></a>
-
-      <a href="./assets/SatyamYadav.pdf"><div class="project">Resume</div></a>
-
-      <i class="fa-solid fa-sun" id="theme-toggle" style="cursor: pointer"></i>
-    </header>
-    <hr />
-    <main>
-      <div class="profile">
-        <div class="photo">
-          <img src="./assets/profile pic.jpg" alt="" />
-        </div>
-        <div class="profile_details">
-          <div class="name"><span>Name:</span> Satyam Yadav</div>
-          <div class="Course"><span>Department:</span> Computer science</div>
-          <div class="year"><span>Year:</span> Final Year</div>
-          <div class="college">
-            <span>College:</span> G.H.Raisoni College of Engineering and
-            Management
-          </div>
-          <div class="links">
-            <div class="github">
-              <a href="https://github.com/SimpleCyber"
-                ><i class="fa-brands fa-github"></i
-              ></a>
-            </div>
-            <div class="linkedin">
-              <a href="https://www.linkedin.com/in/satyam-yada"
-                ><i class="fa-brands fa-linkedin"></i
-              ></a>
-            </div>
-            <div class="youtube">
-              <a href="http://www.youtube.com/@dearcoderr"
-                ><i class="fa-brands fa-youtube"></i
-              ></a>
-            </div>
-            
-            <div class="leetcode">
-              <a href="https://leetcode.com/u/yadav-satyam/"
-                ><i class="fa-solid fa-code"></i
-              ></a>
-            </div>
-
-            <div class="leetcode">
-              <a href="https://x.com/satyam_yadav_04/"
-                ><i class="fa-brands fa-twitter"></i></a>
-            </div>
-          </div>
-        </div>
+      <!-- social icons (Flaticon images) -->
+      <div class="mt-6 flex items-center justify-center gap-4">
+        <a href="https://linkedin.com/in/satyam-yada" target="_blank" class="group inline-flex items-center gap-2">
+          <img src="https://cdn-icons-png.flaticon.com/128/3536/3536505.png" alt="LinkedIn" class="w-9 h-9 rounded-md float-icon" />
+        </a>
+        <a href="https://github.com/SimpleCyber" target="_blank" class="group inline-flex items-center gap-2">
+          <img src="https://cdn-icons-png.flaticon.com/128/25/25657.png" alt="GitHub" class="w-9 h-9 rounded-md float-icon" />
+        </a>
+        <a href="https://twitter.com" target="_blank" class="group inline-flex items-center gap-2">
+          <img src="https://cdn-icons-png.flaticon.com/128/5968/5968830.png" alt="X / Twitter" class="w-9 h-9 rounded-md float-icon" />
+        </a>
+        <a href="https://www.youtube.com/@dearcoderr" target="_blank" class="group inline-flex items-center gap-2">
+          <img src="https://cdn-icons-png.flaticon.com/128/3938/3938037.png" alt="YouTube" class="w-9 h-9 rounded-md float-icon" />
+        </a>
       </div>
-      <div class="projects">
-        <h1 class="heading">Projects</h1>
+
+      <!-- small CTA row -->
+      <div class="mt-8 flex items-center justify-center gap-3">
+        <a href="https://drive.google.com/file/d/11MmeWSTksKlsJfVN04H2gkS2glJYucQC/view?usp=sharing"  target="_blank" download class="inline-flex items-center gap-2 px-4 py-2 rounded-md border text-sm hover:bg-gray-50">
+          <i class="fa-solid fa-download"></i> Resume
+        </a>
+        <a href="#projects" class="inline-flex items-center gap-2 px-4 py-2 rounded-md border text-sm hover:bg-gray-50">
+          <i class="fa-solid fa-arrow-down"></i> View Projects
+        </a>
+      </div>
+    </section>
+
+    <!-- PROJECTS (logo + name + live link only) -->
+    <section id="projects" class="mb-16">
+      <h2 class="text-xl font-semibold mb-6 text-center">Projects</h2>
+
+      <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+        <!-- DevHub -->
+        <a href="https://devhub1.vercel.app/" target="_blank" class="card p-4 rounded-xl flex items-center gap-3 hover:shadow-lg transition reveal">
+          <img src="https://cdn-user-icons.flaticon.com/220084/220084184/1761599576617.svg?token=exp=1761600509~hmac=4a2e256ac24a7d58efc9a61edaf9a0b2"
+               alt="DevHub logo" class="w-12 h-12 object-contain rounded-md rot-r-sm app-icon"/>
+          <div class="flex-1 text-left">
+            <div class="font-medium">DevHub</div>
+            <div class="text-xs text-gray-500 truncate">devhub1.vercel.app</div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square text-gray-400"></i>
+        </a>
+
+        <!-- HabitX -->
+        <a href="https://habit-builder-rho.vercel.app/" target="_blank" class="card p-4 rounded-xl flex items-center gap-3 hover:shadow-lg transition reveal">
+          <img src="https://cdn-icons-png.flaticon.com/128/1694/1694364.png" alt="HabitX" class="w-12 h-12 object-contain rounded-md rot-r-sm app-icon"/>
+          <div class="flex-1 text-left">
+            <div class="font-medium">HabitX</div>
+            <div class="text-xs text-gray-500 truncate">habit-builder-rho.vercel.app</div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square text-gray-400"></i>
+        </a>
+
+        <!-- Workwise -->
+        <a href="https://workwise-sigma.vercel.app/" target="_blank" class="card p-4 rounded-xl flex items-center gap-3 hover:shadow-lg transition reveal">
+          <img src="https://cdn-icons-png.flaticon.com/128/9326/9326534.png" alt="Workwise" class="w-12 h-12 object-contain rounded-md rot-r-sm app-icon"/>
+          <div class="flex-1 text-left">
+            <div class="font-medium">Workwise</div>
+            <div class="text-xs text-gray-500 truncate">workwise-sigma.vercel.app</div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square text-gray-400"></i>
+        </a>
 
         <!-- Imposter -->
-        <div class="project1">
-          <div class="project_image">
-            <a href="https://imposter-r3q6.onrender.com/"
-              ><img src="./assets/imposter.png" alt=""
-            /></a>
+        <a href="https://imposter-r3q6.onrender.com/" target="_blank" class="card p-4 rounded-xl flex items-center gap-3 hover:shadow-lg transition reveal">
+          <img src="https://github.com/SimpleCyber/Fake-profile-detection/blob/main/app/static/images/appLogo.png?raw=true"
+               alt="Imposter" class="w-12 h-12 object-contain rounded-md rot-r-sm app-icon"/>
+          <div class="flex-1 text-left">
+            <div class="font-medium">Imposter</div>
+            <div class="text-xs text-gray-500 truncate">imposter-r3q6.onrender.com</div>
           </div>
-          <div class="project_details">
-            <div class="header">Imposter</div>
-            <div class="details">
-              A platform to detect the fake social media platforms <br />
-              and report them.
+          <i class="fa-solid fa-arrow-up-right-from-square text-gray-400"></i>
+        </a>
+
+        <!-- RentX -->
+        <a href="https://rentx-khaki.vercel.app/" target="_blank" class="card p-4 rounded-xl flex items-center gap-3 hover:shadow-lg transition reveal">
+          <img src="https://cdn-icons-png.flaticon.com/128/580/580670.png" alt="RentX" class="w-12 h-12 object-contain rounded-md rot-r-sm app-icon"/>
+          <div class="flex-1 text-left">
+            <div class="font-medium">RentX</div>
+            <div class="text-xs text-gray-500 truncate">rentx-khaki.vercel.app</div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square text-gray-400"></i>
+        </a>
+
+        <!-- Movie App -->
+        <a href="https://movie404.vercel.app/" target="_blank" class="card p-4 rounded-xl flex items-center gap-3 hover:shadow-lg transition reveal">
+          <img src="https://cdn-icons-png.flaticon.com/128/1038/1038100.png" alt="Movie App" class="w-12 h-12 object-contain rounded-md rot-r-sm app-icon"/>
+          <div class="flex-1 text-left">
+            <div class="font-medium">Movie App</div>
+            <div class="text-xs text-gray-500 truncate">movie404.vercel.app</div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square text-gray-400"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="mb-16 reveal">
+      <h2 class="text-xl font-semibold mb-6 text-center">Experience</h2>
+
+      <div class="space-y-4">
+        <div class="p-4 card rounded-xl border shadow-sm flex gap-4">
+          <img src="https://imgs.search.brave.com/ggIzSqC69sSu8w0m_Z-I07MtbvR0PXvY7RFs16rLTB4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi8wLzA4L0Nv/bWF1X0xPR08uanBn/LzI1MHB4LUNvbWF1/X0xPR08uanBn" alt="Comau" class="w-12 h-12 object-contain rounded-md"/>
+          <div>
+            <div class="flex items-center gap-3">
+              <div class="font-semibold">QA Intern — Comau India Pvt. Ltd.</div>
+              <div class="text-xs text-gray-500">June 2025 – Present</div>
             </div>
-            <a
-              href="https://imposter-r3q6.onrender.com/"
-              style="margin-bottom: 0.5rem"
-              ><span class="link">Project Link</span></a
-            >
-            <div class="techstack">
-              <i class="fa-brands fa-html5"></i>
-              <i class="fa-brands fa-js"></i>
-              <i class="fa-brands fa-python"></i>
-              <i class="fa-solid fa-pepper-hot"></i>
-            </div>
+            <ul class="mt-2 text-sm text-gray-600 list-disc ml-5">
+              <li>Performed manual and UI testing for industrial automation software.</li>
+              <li>Executed and documented test cases and collaborated with developers.</li>
+              <li>Used Selenium, Postman, Docker and VirtualBox.</li>
+            </ul>
           </div>
         </div>
 
-        <!-- Blogging website -->
-        <div class="project1">
-          <div class="project_image">
-            <a href="https://bloggersatyam.onrender.com/"
-              ><img
-                src="./assets/blogging.png"
-                alt=""
-                style="border: 3px solid rgb(81, 81, 81); border-radius: 5px"
-            /></a>
-          </div>
-          <div class="project_details">
-            <div class="header">Blogging website</div>
-            <div class="details">
-              A Django-based blogging platform integrated with Firebase for
-              storage.
+         <div class="p-4 card rounded-xl border shadow-sm flex gap-4">
+          <img src="https://avatars.githubusercontent.com/u/171839651?s=200 alt="Cyber Chakra" class="w-12 h-12 object-contain rounded-md"/>
+          <div>
+            <div class="flex items-center gap-3">
+              <div class="font-semibold">Fullstack Developer — Cyber Chakra</div>
+              <div class="text-xs text-gray-500">April 2025 – June 2025</div>
             </div>
-            <a
-              href="https://bloggersatyam.onrender.com/"
-              style="margin-bottom: 0.5rem"
-              ><span class="link">Project Link</span></a
-            >
-            <div class="techstack">
-              <i class="fa-brands fa-html5"></i>
-              <i class="fa-brands fa-js"></i>
-              <i class="fa-brands fa-python"></i>
-              <i class="dj"><strong>dj</strong></i>
-            </div>
+            <ul class="mt-2 text-sm text-gray-600 list-disc ml-5">
+              <li>Built end-to-end startup management system (Next.js + Convex).</li>
+              <li>Lead team of 4 people</li>
+            </ul>
           </div>
         </div>
 
-        <!-- Edu Quality -->
-        <div class="project1">
-          <div class="project_image">
-            <a href="https://simplecyber.github.io/Edulite/"
-              ><img src="./assets/eduquality.png" alt=""
-            /></a>
-          </div>
-          <div class="project_details">
-            <div class="header">Edu-Quality</div>
-            <div class="details">
-              Educational platform for children's with text summarizer bot.
+        
+
+        <div class="p-4 card rounded-xl border shadow-sm flex gap-4">
+          <img src="https://github.com/user-attachments/assets/7efa815c-bce5-44e0-bbd3-0e807e1f4c71" alt="Quernel AI" class="w-12 h-12 object-contain rounded-md"/>
+          <div>
+            <div class="flex items-center gap-3">
+              <div class="font-semibold">Freelance Fullstack Developer — Quernal AI</div>
+              <div class="text-xs text-gray-500">March 2025 – April 2025</div>
             </div>
-            <a
-              href="https://simplecyber.github.io/Edulite/"
-              style="margin-bottom: 0.5rem"
-              ><span class="link">Project Link</span></a
-            >
-            <div class="techstack">
-              <i class="fa-brands fa-html5"></i>
-              <i class="fa-brands fa-js"></i>
-              <i class="fa-brands fa-python"></i>
-              <i class="fa-solid fa-cloud"></i>
-            </div>
+            <ul class="mt-2 text-sm text-gray-600 list-disc ml-5">
+              <li>Built website with blog, job board & admin panel (Next.js + Firebase).</li>
+              <li>Implemented role-based CMS & Supabase-backed job system.</li>
+            </ul>
           </div>
         </div>
 
-        <!-- Aora -->
-        <div class="project1">
-          <div class="project_image">
-            <a href="https://github.com/SimpleCyber/Aora"
-              ><img src="./assets/aora.png" alt=""
-            /></a>
+
+       
+
+
+        <div class="p-4 card rounded-xl border shadow-sm flex gap-4">
+          <img src="https://lh3.googleusercontent.com/yCnYs75aff-N2YIfc4DMnrY1vvwjnyhkPrhTStlupixxGMGmIeDttR75g4r9X45Ribn-fXSwGmhYRJmTgmnomiYg8A=s120" alt="Quernel AI" class="w-12 h-12 object-contain rounded-md"/>
+          <div>
+            <div class="flex items-center gap-3">
+              <div class="font-semibold">Freelance Frontend Developer — Commentify</div>
+              <div class="text-xs text-gray-500">Jan 2025 – Feb 2025</div>
+            </div>
+            <ul class="mt-2 text-sm text-gray-600 list-disc ml-5">
+              <li>Migrated code from react.js to  Next.js and Tailwind</li>
+              <li>Managed customer support for 50+ users through Crisp platform.</li>
+            </ul>
           </div>
+        </div>
 
-          <div class="project_details">
-            <div class="header">Aora : Video sharing platform</div>
-            <div class="details">
-              Mobile application : Watch and share videos here.
+        <div class="p-4 card rounded-xl border shadow-sm flex gap-4">
+          <img src="https://imgs.search.brave.com/YU4y-4F2mhfNMQwlEc4H7lw_KcrudOMpjxsgdOjLn-U/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9hbGxl/Z2lhbmNlLWVkdWNh/cmUuaW4vc3RvcmFn/ZS91cGxvYWRzL2Nv/bGxlZ2VzL3RodW1i/LzE1MF8xNTBfMTY1/NjY3NjU0NUdIUkNF/TVB1bmUucG5n" alt="GHRCEM" class="w-12 h-12 object-contain rounded-md"/>
+          <div>
+            <div class="flex items-center gap-3">
+              <div class="font-semibold">Peer Teacher — DSA in C++ (GHRCEM)</div>
+              <div class="text-xs text-gray-500">Jan 2024 – June 2024</div>
             </div>
-
-            <a
-              href="https://github.com/SimpleCyber/Aora"
-              style="margin-bottom: 0.5rem"
-              ><span class="link">Project Link</span></a
-            >
-            <div class="techstack">
-              <i class="fa-brands fa-react"></i>
-              <i class="fa-brands fa-envira"></i>
-            </div>
+            <ul class="mt-2 text-sm text-gray-600 list-disc ml-5">
+              <li>Taught DSA to 120+ students and made exercises/assessments.</li>
+            </ul>
           </div>
         </div>
       </div>
-      <div class="achive">
-        <h1 class="heading">Achievements</h1>
+    </section>
 
-        <div class="achivements">
-          <div class="achive1">
-            <div class="acive_pic">
-              <img src="./assets/sih2024.jpg" alt="" />
-            </div>
-            <div class="achive_details">SIH 2024 Winner</div>
+    <!-- STACK -->
+    <section id="stack" class="mb-16 reveal">
+      <h2 class="text-xl font-semibold mb-6 text-center">Tech Stack</h2>
+      <div class="grid grid-cols-3 sm:grid-cols-4 gap-4">
+
+        <div class="p-3 card rounded-lg flex items-center gap-3">
+          <img src="https://github.com/user-attachments/assets/a7124a86-7219-4639-a31d-1ab267e4ca68" alt="React" class="w-10 h-10 object-contain"/>
+          <div>
+            <div class="font-medium">Next</div>
+            <div class="text-xs text-gray-500">Frontend</div>
           </div>
+        </div>
 
-          <div class="achive1">
-            <div class="acive_pic">
-              <img src="./assets/game development.jpg" alt="" />
-            </div>
-            <div class="achive_details">Game Dev 1st</div>
+
+        <div class="p-3 card rounded-lg flex items-center gap-3">
+          <img src="https://github.com/user-attachments/assets/6f232619-2ad1-4331-a279-d15f31a851c1" alt="React" class="w-10 h-10 object-contain"/>
+          <div>
+            <div class="font-medium">React</div>
+            <div class="text-xs text-gray-500">Frontend</div>
           </div>
+        </div>
 
-          <div class="achive1">
-            <div class="acive_pic">
-              <img src="./assets/sspuu.jpg" alt="" />
-            </div>
-            <div class="achive_details">Tantar 2023 Winner</div>
+        <div class="p-3 card rounded-lg flex items-center gap-3">
+          <img src="https://github.com/user-attachments/assets/0fab158a-b4b2-4863-8b80-e92128367d3a" alt="TypeScript" class="w-10 h-10 object-contain"/>
+          <div>
+            <div class="font-medium">TypeScript</div>
+            <div class="text-xs text-gray-500">Language</div>
           </div>
+        </div>
 
-          <div class="achive1">
-            <div class="acive_pic">
-              <img src="./assets/hackfest.jpg" alt="" />
-            </div>
-            <div class="achive_details">Hackfest</div>
+
+
+        <div class="p-3 card rounded-lg flex items-center gap-3">
+          <img src="https://github.com/user-attachments/assets/24b59d89-79df-4530-bd1c-581ef3ab833c" alt="Node.js" class="w-10 h-10 object-contain"/>
+          <div>
+            <div class="font-medium">Node.js</div>
+            <div class="text-xs text-gray-500">Backend</div>
           </div>
+        </div>
 
-          <div class="achive1">
-            <div class="acive_pic">
-              <img src="./assets/sih 2023.jpg" alt="" />
-            </div>
-            <div class="achive_details">Sih 2023 finalist</div>
+        <div class="p-3 card rounded-lg flex items-center gap-3">
+          <img src="https://github.com/user-attachments/assets/9312afce-fdb6-4c76-8c69-06d653442e55" alt="FastAPI" class="w-10 h-10 object-contain"/>
+          <div>
+            <div class="font-medium">FastAPI</div>
+            <div class="text-xs text-gray-500">API</div>
           </div>
+        </div>
 
-          <div class="achive1">
-            <div class="acive_pic">
-              <img src="./assets/code vista.jpg" alt="" />
-            </div>
-            <div class="achive_details">
-              Code Vista 2023 <br />
-              Winner
-            </div>
+        <div class="p-3 card rounded-lg flex items-center gap-3">
+          <img src="https://github.com/user-attachments/assets/9607e176-a6fc-4e15-a39b-b73b8b2f7654" alt="Android" class="w-10 h-10 object-contain"/>
+          <div>
+            <div class="font-medium">Android</div>
+            <div class="text-xs text-gray-500">Mobile</div>
           </div>
+        </div>
 
-          <div class="achive1">
-            <div class="acive_pic">
-              <img src="./assets/peer councellor.jpg" alt="" />
-            </div>
-            <div class="achive_details">Peer councellor</div>
+         <div class="p-3 card rounded-lg flex items-center gap-3">
+          <img src="https://github.com/user-attachments/assets/f9cbbeef-0807-4183-8235-b75862c117d5" alt="Android" class="w-10 h-10 object-contain"/>
+          <div>
+            <div class="font-medium">MongoDB</div>
+            <div class="text-xs text-gray-500">Database</div>
           </div>
+        </div>
 
-          <div class="achive1">
-            <div class="acive_pic">
-              <img src="./assets/Pitch Deck.jpg" alt="" />
-            </div>
-            <div class="achive_details">Pitch Deck</div>
+         <div class="p-3 card rounded-lg flex items-center gap-3">
+          <img src="https://github.com/user-attachments/assets/65d9f987-d03d-4bd6-afb0-9eaf4511feb6" alt="Android" class="w-10 h-10 object-contain"/>
+          <div>
+            <div class="font-medium">Postgress</div>
+            <div class="text-xs text-gray-500">Database</div>
           </div>
         </div>
       </div>
-    </main>
-    <script>
-      const themeToggle = document.getElementById("theme-toggle");
+    </section>
 
-      // Check for saved theme preference or default to dark
-      const currentTheme = localStorage.getItem("theme") || "dark";
-      document.documentElement.setAttribute("data-theme", currentTheme);
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements" class="mb-8 reveal">
+      <h2 class="text-xl font-semibold mb-6 text-center">Achievements</h2>
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div class="card p-3 rounded-lg flex flex-col items-center">
+          <img src="https://github.com/user-attachments/assets/7bbc55f7-84d8-4a2e-a819-703768e735f7" alt="SIH Winner" class="w-full h-24 object-cover rounded-md mb-2"/>
+          <div class="text-sm font-medium">Smart India Hackathon — Winner</div>
+        </div>
+        <div class="card p-3 rounded-lg flex flex-col items-center">
+          <img src="https://media.licdn.com/dms/image/v2/D4D22AQFEneXpslcdZQ/feedshare-shrink_800/feedshare-shrink_800/0/1708670465130?e=1762992000&v=beta&t=hO9lDiXp0wSWuspKYo6H7L9Hn9GrhQhps7QpZFN1FDw" alt="CodeVista" class="w-full h-24 object-cover rounded-md mb-2"/>
+          <div class="text-sm font-medium">TANTRA Hackathon — 1st Place</div>
+        </div>
 
-      // Update icon based on current theme
-      if (currentTheme === "light") {
-        themeToggle.classList.replace("fa-sun", "fa-moon");
-      }
+        <div class="card p-3 rounded-lg flex flex-col items-center">
+          <img src="https://media.licdn.com/dms/image/v2/D4D22AQHoelNo-nUfrg/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1719226942432?e=1762992000&v=beta&t=idpESJs4ae37CVaiDtA6pALQUK6l_3efDtFE20iKbEk" alt="CodeVista" class="w-full h-24 object-cover rounded-md mb-2"/>
+          <div class="text-sm font-medium">Peer Counselor</div>
+        </div>
 
-      themeToggle.addEventListener("click", () => {
-        const currentTheme =
-          document.documentElement.getAttribute("data-theme");
-        const newTheme = currentTheme === "light" ? "dark" : "light";
+        <div class="card p-3 rounded-lg flex flex-col items-center">
+          <img src="https://github.com/user-attachments/assets/4ffab36d-a914-4738-a438-d841923afbd8" alt="CodeVista" class="w-full h-24 object-cover rounded-md mb-2"/>
+          <div class="text-sm font-medium">CodeVista — 1st Place</div>
+        </div>
+      </div>
+    </section>
 
-        // Toggle icon
-        themeToggle.classList.toggle("fa-sun");
-        themeToggle.classList.toggle("fa-moon");
+  </main>
 
-        // Update theme
-        document.documentElement.setAttribute("data-theme", newTheme);
-        localStorage.setItem("theme", newTheme);
+  <!-- Floating theme toggle (bottom-right) -->
+  <div id="themeToggle" class="theme-toggle" title="Toggle light / dark">
+    <i id="iconSun" class="fa-solid fa-sun"></i>
+    <i id="iconMoon" class="fa-solid fa-moon hidden"></i>
+  </div>
+
+  <script>
+    // IntersectionObserver reveals
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('show');
       });
-    </script>
-  </body>
+    }, {threshold: 0.12});
+    reveals.forEach(r => io.observe(r));
+
+    // theme toggle logic (persist in localStorage)
+    const docEl = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const sun = document.getElementById('iconSun');
+    const moon = document.getElementById('iconMoon');
+
+    function setTheme(t) {
+      docEl.setAttribute('data-theme', t);
+      if (t === 'dark') {
+        sun.classList.add('hidden');
+        moon.classList.remove('hidden');
+      } else {
+        sun.classList.remove('hidden');
+        moon.classList.add('hidden');
+      }
+      localStorage.setItem('theme', t);
+    }
+
+    (function initTheme(){
+      const saved = localStorage.getItem('theme');
+      if (saved) return setTheme(saved);
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setTheme(prefersDark ? 'dark' : 'light');
+    })();
+
+    toggle.addEventListener('click', () => {
+      const cur = docEl.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      setTheme(cur === 'dark' ? 'light' : 'dark');
+    });
+
+    // small keyboard shortcut: "g" -> projects
+    document.addEventListener('keydown', (e) => {
+      if (e.key.toLowerCase() === 'g') document.getElementById('projects').scrollIntoView({behavior:'smooth'});
+    });
+  </script>
+</body>
 </html>
