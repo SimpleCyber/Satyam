@@ -1,50 +1,97 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Satyam Yadav — Portfolio</title>
-  <meta name="description" content="I build intelligent web & mobile apps, automation systems, and AI tools — from prototypes to production." />
+  <meta name="description"
+    content="I build intelligent web & mobile apps, automation systems, and AI tools — from prototypes to production." />
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Font Awesome (for UI bits) -->
- <!-- ✅ Updated Font Awesome 6.6.0 CDN -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-/>
+  <!-- ✅ Updated Font Awesome 6.6.0 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 
 
   <style>
-    :root{
+    :root {
       --bg: #ffffff;
       --muted: #6b7280;
       --card: #f8fafc;
       --accent: #0f172a;
     }
-    [data-theme="dark"]{
+
+    [data-theme="dark"] {
       --bg: #071023;
       --muted: #94a3b8;
       --card: #0b1220;
       --accent: #e6eefc;
     }
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--accent); font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--accent);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
 
     /* small helpers */
-    .float-icon { transition: transform .22s ease, box-shadow .22s ease; }
-    .float-icon:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 12px 30px rgba(2,6,23,.08); }
-    .reveal { opacity:0; transform: translateY(14px); transition: all .52s cubic-bezier(.2,.9,.2,1); }
-    .reveal.show { opacity:1; transform: none; }
-    .rot-l { transform: rotate(-6deg) translateX(8px); }
-    .rot-r-sm { transform: rotate(3deg); }
-    .rot-l-md { transform: rotate(-6deg) translateX(-16px); }
-    .rot-r-md { transform: rotate(6deg) translateX(-32px); }
-    .app-icon:hover { transform: rotate(0deg) translateX(0) !important; }
-    .card { background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.94)); border: 1px solid rgba(15,23,42,0.04); }
-    [data-theme="dark"] .card { background: linear-gradient(180deg, rgba(12,14,25,0.75), rgba(12,14,25,0.9)); border: 1px solid rgba(255,255,255,0.04); }
+    .float-icon {
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+
+    .float-icon:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(2, 6, 23, .08);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: all .52s cubic-bezier(.2, .9, .2, 1);
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: none;
+    }
+
+    .rot-l {
+      transform: rotate(-6deg) translateX(8px);
+    }
+
+    .rot-r-sm {
+      transform: rotate(3deg);
+    }
+
+    .rot-l-md {
+      transform: rotate(-6deg) translateX(-16px);
+    }
+
+    .rot-r-md {
+      transform: rotate(6deg) translateX(-32px);
+    }
+
+    .app-icon:hover {
+      transform: rotate(0deg) translateX(0) !important;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.94));
+      border: 1px solid rgba(15, 23, 42, 0.04);
+    }
+
+    [data-theme="dark"] .card {
+      background: linear-gradient(180deg, rgba(12, 14, 25, 0.75), rgba(12, 14, 25, 0.9));
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
     /* floating toggle */
     .theme-toggle {
       position: fixed;
@@ -54,32 +101,60 @@
       width: 52px;
       height: 52px;
       border-radius: 999px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow: 0 8px 20px rgba(2,6,23,.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(2, 6, 23, .08);
       cursor: pointer;
       background: var(--bg);
-      border: 1px solid rgba(15,23,42,0.05);
+      border: 1px solid rgba(15, 23, 42, 0.05);
       backdrop-filter: blur(6px);
-        color: var(--accent);
+      color: var(--accent);
     }
 
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
 
+    .tooltip::after {
+      content: attr(data-tip);
+      position: absolute;
+      top: -34px;
+      /* show above icon */
+      left: 50%;
+      transform: translateX(-50%) translateY(6px);
+      background: rgba(15, 23, 42, 0.9);
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
 
+    [data-theme="dark"] .tooltip::after {
+      background: rgba(255, 255, 255, 0.9);
+      color: #0f172a;
+    }
 
-    
+    .tooltip:hover::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
   </style>
 </head>
+
 <body class="antialiased" data-theme="light">
 
   <main class="max-w-4xl mx-auto px-5 md:px-8 py-28">
 
     <!-- HERO (centered) -->
     <section id="home" class="text-center mx-auto max-w-3xl mb-20 reveal">
-      <img src="https://github.com/user-attachments/assets/5954c508-cb31-4f6a-9a5f-ca6238d25102"
-           alt="Satyam Yadav"
-           class="mx-auto w-28 h-28 rounded-full object-cover shadow-lg mb-6"/>
+      <img src="https://github.com/user-attachments/assets/5954c508-cb31-4f6a-9a5f-ca6238d25102" alt="Satyam Yadav"
+        class="mx-auto w-28 h-28 rounded-full object-cover shadow-lg mb-6" />
 
       <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">
         Hi, I'm <span class="inline-block">SATYAM YADAV</span> 👋
@@ -91,26 +166,37 @@
 
       <!-- social icons (Flaticon images) -->
       <div class="mt-6 flex items-center justify-center gap-4">
-        <a href="https://linkedin.com/in/satyam-yada" target="_blank" class="group inline-flex items-center gap-2">
-          <img src="https://cdn-icons-png.flaticon.com/128/3536/3536505.png" alt="LinkedIn" class="w-9 h-9 rounded-md float-icon" />
+        <a href="https://linkedin.com/in/satyam-yada" target="_blank" class="tooltip" data-tip="@satyam-yada">
+          <img src="https://cdn-icons-png.flaticon.com/128/3536/3536505.png" alt="LinkedIn"
+            class="w-9 h-9 rounded-md float-icon" />
         </a>
-        <a href="https://github.com/SimpleCyber" target="_blank" class="group inline-flex items-center gap-2">
-          <img src="https://cdn-icons-png.flaticon.com/128/25/25657.png" alt="GitHub" class="w-9 h-9 rounded-md float-icon bg-gray-50" />
+
+        <a href="https://github.com/SimpleCyber" target="_blank" class="tooltip" data-tip="@SimpleCyber">
+          <img src="https://cdn-icons-png.flaticon.com/128/25/25657.png" alt="GitHub"
+            class="w-9 h-9 rounded-md float-icon bg-gray-50" />
         </a>
-        <a href="https://twitter.com" target="_blank" class="group inline-flex items-center gap-2">
-          <img src="https://cdn-icons-png.flaticon.com/128/5968/5968830.png" alt="X / Twitter" class="w-9 h-9 rounded-md float-icon bg-gray-50" />
+
+        <a href="https://x.com/satyam_yadav_04" target="_blank" class="tooltip" data-tip="@satyam_yadav_04">
+          <img src="https://cdn-icons-png.flaticon.com/128/5968/5968830.png" alt="X"
+            class="w-9 h-9 rounded-md float-icon bg-gray-50" />
         </a>
-        <a href="https://www.youtube.com/@dearcoderr" target="_blank" class="group inline-flex items-center gap-2">
-          <img src="https://cdn-icons-png.flaticon.com/128/3938/3938037.png" alt="YouTube" class="w-9 h-9 rounded-md float-icon" />
+
+        <a href="https://www.youtube.com/@dearcoderr" target="_blank" class="tooltip" data-tip="@dearcoderr">
+          <img src="https://cdn-icons-png.flaticon.com/128/3938/3938037.png" alt="YouTube"
+            class="w-9 h-9 rounded-md float-icon" />
         </a>
       </div>
 
+
       <!-- small CTA row -->
       <div class="mt-8 flex items-center justify-center gap-3">
-        <a href="https://drive.google.com/file/d/11MmeWSTksKlsJfVN04H2gkS2glJYucQC/view?usp=sharing"  target="_blank" download class="inline-flex items-center gap-2 px-4 py-2 rounded-md border text-sm hover:bg-gray-50 hover:text-black">
+        <a href="https://drive.google.com/file/d/11MmeWSTksKlsJfVN04H2gkS2glJYucQC/view?usp=sharing" target="_blank"
+          download
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-md border text-sm hover:bg-gray-50 hover:text-black">
           <i class="fa-solid fa-download"></i> Resume
         </a>
-        <a href="#projects" class="inline-flex items-center gap-2 px-4 py-2 rounded-md border text-sm hover:bg-gray-50 hover:text-black">
+        <a href="#projects"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-md border text-sm hover:bg-gray-50 hover:text-black">
           <i class="fa-solid fa-arrow-down"></i> View Projects
         </a>
       </div>
@@ -122,65 +208,76 @@
 
       <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
         <!-- DevHub -->
-        <a href="https://devhub1.vercel.app/" target="_blank" class="card p-4 rounded-xl flex items-center gap-3 hover:shadow-lg transition reveal">
-          <img src="https://github.com/user-attachments/assets/c6ecfaa2-2f12-4b29-9aac-d161741c399f"
-               alt="DevHub logo" class="w-12 h-12 object-contain rounded-md rot-r-sm app-icon "/>
+        <a href="https://devhub1.vercel.app/" target="_blank"
+          class="card p-4 rounded-xl flex items-center gap-3 hover:shadow-lg transition reveal">
+          <img src="https://github.com/user-attachments/assets/c6ecfaa2-2f12-4b29-9aac-d161741c399f" alt="DevHub logo"
+            class="w-12 h-12 object-contain rounded-md rot-r-sm app-icon " />
           <div class="flex-1 text-left">
             <div class="font-medium">DevHub</div>
             <div class="text-xs text-gray-500 truncate">devhub1.vercel.app</div>
           </div>
-          
+
         </a>
 
         <!-- HabitX -->
-        <a href="https://habit-builder-rho.vercel.app/" target="_blank" class="card p-4 rounded-xl flex items-center gap-3 hover:shadow-lg transition reveal">
-          <img src="https://cdn-icons-png.flaticon.com/128/1694/1694364.png" alt="HabitX" class="w-12 h-12 object-contain rounded-md rot-r-sm app-icon"/>
+        <a href="https://habit-builder-rho.vercel.app/" target="_blank"
+          class="card p-4 rounded-xl flex items-center gap-3 hover:shadow-lg transition reveal">
+          <img src="https://cdn-icons-png.flaticon.com/128/1694/1694364.png" alt="HabitX"
+            class="w-12 h-12 object-contain rounded-md rot-r-sm app-icon" />
           <div class="flex-1 text-left">
             <div class="font-medium">HabitX</div>
             <div class="text-xs text-gray-500 truncate">habit-builder-rho.vercel.app</div>
           </div>
-          
+
         </a>
 
         <!-- Workwise -->
-        <a href="https://workwise-sigma.vercel.app/" target="_blank" class="card p-4 rounded-xl flex items-center gap-3 hover:shadow-lg transition reveal">
-          <img src="https://cdn-icons-png.flaticon.com/128/9326/9326534.png" alt="Workwise" class="w-12 h-12 object-contain rounded-md rot-r-sm app-icon"/>
+        <a href="https://workwise-sigma.vercel.app/" target="_blank"
+          class="card p-4 rounded-xl flex items-center gap-3 hover:shadow-lg transition reveal">
+          <img src="https://cdn-icons-png.flaticon.com/128/9326/9326534.png" alt="Workwise"
+            class="w-12 h-12 object-contain rounded-md rot-r-sm app-icon" />
           <div class="flex-1 text-left">
             <div class="font-medium">Workwise</div>
             <div class="text-xs text-gray-500 truncate">workwise-sigma.vercel.app</div>
           </div>
-          
+
         </a>
 
         <!-- Imposter -->
-        <a href="https://imposter-r3q6.onrender.com/" target="_blank" class="card p-4 rounded-xl flex items-center gap-3 hover:shadow-lg transition reveal">
-          <img src="https://github.com/SimpleCyber/Fake-profile-detection/blob/main/app/static/images/appLogo.png?raw=true"
-               alt="Imposter" class="w-12 h-12 object-contain rounded-md rot-r-sm app-icon"/>
+        <a href="https://imposter-r3q6.onrender.com/" target="_blank"
+          class="card p-4 rounded-xl flex items-center gap-3 hover:shadow-lg transition reveal">
+          <img
+            src="https://github.com/SimpleCyber/Fake-profile-detection/blob/main/app/static/images/appLogo.png?raw=true"
+            alt="Imposter" class="w-12 h-12 object-contain rounded-md rot-r-sm app-icon" />
           <div class="flex-1 text-left">
             <div class="font-medium">Imposter</div>
             <div class="text-xs text-gray-500 truncate">imposter-r3q6.onrender.com</div>
           </div>
-          
+
         </a>
 
         <!-- RentX -->
-        <a href="https://rentx-khaki.vercel.app/" target="_blank" class="card p-4 rounded-xl flex items-center gap-3 hover:shadow-lg transition reveal">
-          <img src="https://cdn-icons-png.flaticon.com/128/580/580670.png" alt="RentX" class="w-12 h-12 object-contain rounded-md rot-r-sm app-icon"/>
+        <a href="https://rentx-khaki.vercel.app/" target="_blank"
+          class="card p-4 rounded-xl flex items-center gap-3 hover:shadow-lg transition reveal">
+          <img src="https://cdn-icons-png.flaticon.com/128/580/580670.png" alt="RentX"
+            class="w-12 h-12 object-contain rounded-md rot-r-sm app-icon" />
           <div class="flex-1 text-left">
             <div class="font-medium">RentX</div>
             <div class="text-xs text-gray-500 truncate">rentx-khaki.vercel.app</div>
           </div>
-          
+
         </a>
 
         <!-- Movie App -->
-        <a href="https://movie404.vercel.app/" target="_blank" class="card p-4 rounded-xl flex items-center gap-3 hover:shadow-lg transition reveal">
-          <img src="https://cdn-icons-png.flaticon.com/128/1038/1038100.png" alt="Movie App" class="w-12 h-12 object-contain rounded-md rot-r-sm app-icon"/>
+        <a href="https://movie404.vercel.app/" target="_blank"
+          class="card p-4 rounded-xl flex items-center gap-3 hover:shadow-lg transition reveal">
+          <img src="https://cdn-icons-png.flaticon.com/128/1038/1038100.png" alt="Movie App"
+            class="w-12 h-12 object-contain rounded-md rot-r-sm app-icon" />
           <div class="flex-1 text-left">
             <div class="font-medium">Movie App</div>
             <div class="text-xs text-gray-500 truncate">movie404.vercel.app</div>
           </div>
-          
+
         </a>
       </div>
     </section>
@@ -191,7 +288,9 @@
 
       <div class="space-y-4">
         <div class="p-4 card rounded-xl border shadow-sm flex gap-4">
-          <img src="https://imgs.search.brave.com/ggIzSqC69sSu8w0m_Z-I07MtbvR0PXvY7RFs16rLTB4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi8wLzA4L0Nv/bWF1X0xPR08uanBn/LzI1MHB4LUNvbWF1/X0xPR08uanBn" alt="Comau" class="w-12 h-12 object-contain rounded-md"/>
+          <img
+            src="https://imgs.search.brave.com/ggIzSqC69sSu8w0m_Z-I07MtbvR0PXvY7RFs16rLTB4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi8wLzA4L0Nv/bWF1X0xPR08uanBn/LzI1MHB4LUNvbWF1/X0xPR08uanBn"
+            alt="Comau" class="w-12 h-12 object-contain rounded-md" />
           <div>
             <div class="flex items-center gap-3">
               <div class="font-semibold">QA Intern — Comau India Pvt. Ltd.</div>
@@ -205,8 +304,9 @@
           </div>
         </div>
 
-         <div class="p-4 card rounded-xl border shadow-sm flex gap-4">
-          <img src="https://avatars.githubusercontent.com/u/171839651?s=200 alt="Cyber Chakra" class="w-12 h-12 object-contain rounded-md"/>
+        <div class="p-4 card rounded-xl border shadow-sm flex gap-4">
+          <img src="https://avatars.githubusercontent.com/u/171839651?s=200 alt=" Cyber Chakra"
+            class="w-12 h-12 object-contain rounded-md" />
           <div>
             <div class="flex items-center gap-3">
               <div class="font-semibold">Fullstack Developer — Cyber Chakra</div>
@@ -219,10 +319,11 @@
           </div>
         </div>
 
-        
+
 
         <div class="p-4 card rounded-xl border shadow-sm flex gap-4">
-          <img src="https://github.com/user-attachments/assets/7efa815c-bce5-44e0-bbd3-0e807e1f4c71" alt="Quernel AI" class="w-12 h-12 object-contain rounded-md"/>
+          <img src="https://github.com/user-attachments/assets/7efa815c-bce5-44e0-bbd3-0e807e1f4c71" alt="Quernel AI"
+            class="w-12 h-12 object-contain rounded-md" />
           <div>
             <div class="flex items-center gap-3">
               <div class="font-semibold">Freelance Fullstack Developer — Quernal AI</div>
@@ -236,25 +337,29 @@
         </div>
 
 
-       
+
 
 
         <div class="p-4 card rounded-xl border shadow-sm flex gap-4">
-          <img src="https://lh3.googleusercontent.com/yCnYs75aff-N2YIfc4DMnrY1vvwjnyhkPrhTStlupixxGMGmIeDttR75g4r9X45Ribn-fXSwGmhYRJmTgmnomiYg8A=s120" alt="Quernel AI" class="w-12 h-12 object-contain rounded-md"/>
+          <img
+            src="https://lh3.googleusercontent.com/yCnYs75aff-N2YIfc4DMnrY1vvwjnyhkPrhTStlupixxGMGmIeDttR75g4r9X45Ribn-fXSwGmhYRJmTgmnomiYg8A=s120"
+            alt="Quernel AI" class="w-12 h-12 object-contain rounded-md" />
           <div>
             <div class="flex items-center gap-3">
               <div class="font-semibold">Freelance Frontend Developer — Commentify</div>
               <div class="text-xs text-gray-500">Jan 2025 – Feb 2025</div>
             </div>
             <ul class="mt-2 text-sm text-gray-600 list-disc ml-5">
-              <li>Migrated code from react.js to  Next.js and Tailwind</li>
+              <li>Migrated code from react.js to Next.js and Tailwind</li>
               <li>Managed customer support for 50+ users through Crisp platform.</li>
             </ul>
           </div>
         </div>
 
         <div class="p-4 card rounded-xl border shadow-sm flex gap-4">
-          <img src="https://imgs.search.brave.com/YU4y-4F2mhfNMQwlEc4H7lw_KcrudOMpjxsgdOjLn-U/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9hbGxl/Z2lhbmNlLWVkdWNh/cmUuaW4vc3RvcmFn/ZS91cGxvYWRzL2Nv/bGxlZ2VzL3RodW1i/LzE1MF8xNTBfMTY1/NjY3NjU0NUdIUkNF/TVB1bmUucG5n" alt="GHRCEM" class="w-12 h-12 object-contain rounded-md"/>
+          <img
+            src="https://imgs.search.brave.com/YU4y-4F2mhfNMQwlEc4H7lw_KcrudOMpjxsgdOjLn-U/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9hbGxl/Z2lhbmNlLWVkdWNh/cmUuaW4vc3RvcmFn/ZS91cGxvYWRzL2Nv/bGxlZ2VzL3RodW1i/LzE1MF8xNTBfMTY1/NjY3NjU0NUdIUkNF/TVB1bmUucG5n"
+            alt="GHRCEM" class="w-12 h-12 object-contain rounded-md" />
           <div>
             <div class="flex items-center gap-3">
               <div class="font-semibold">Peer Teacher — DSA in C++ (GHRCEM)</div>
@@ -274,7 +379,8 @@
       <div class="grid grid-cols-3 sm:grid-cols-4 gap-4">
 
         <div class="p-3 card rounded-lg flex items-center gap-3">
-          <img src="https://github.com/user-attachments/assets/a7124a86-7219-4639-a31d-1ab267e4ca68" alt="React" class="w-10 h-10 object-contain bg-gray-50 border rounded-[50%]"/>
+          <img src="https://github.com/user-attachments/assets/a7124a86-7219-4639-a31d-1ab267e4ca68" alt="React"
+            class="w-10 h-10 object-contain bg-gray-50 border rounded-[50%]" />
           <div>
             <div class="font-medium">Next</div>
             <div class="text-xs text-gray-500">Frontend</div>
@@ -283,7 +389,8 @@
 
 
         <div class="p-3 card rounded-lg flex items-center gap-3">
-          <img src="https://github.com/user-attachments/assets/6f232619-2ad1-4331-a279-d15f31a851c1" alt="React" class="w-10 h-10 object-contain"/>
+          <img src="https://github.com/user-attachments/assets/6f232619-2ad1-4331-a279-d15f31a851c1" alt="React"
+            class="w-10 h-10 object-contain" />
           <div>
             <div class="font-medium">React</div>
             <div class="text-xs text-gray-500">Frontend</div>
@@ -291,7 +398,8 @@
         </div>
 
         <div class="p-3 card rounded-lg flex items-center gap-3">
-          <img src="https://github.com/user-attachments/assets/0fab158a-b4b2-4863-8b80-e92128367d3a" alt="TypeScript" class="w-10 h-10 object-contain"/>
+          <img src="https://github.com/user-attachments/assets/0fab158a-b4b2-4863-8b80-e92128367d3a" alt="TypeScript"
+            class="w-10 h-10 object-contain" />
           <div>
             <div class="font-medium">TypeScript</div>
             <div class="text-xs text-gray-500">Language</div>
@@ -301,7 +409,8 @@
 
 
         <div class="p-3 card rounded-lg flex items-center gap-3">
-          <img src="https://github.com/user-attachments/assets/24b59d89-79df-4530-bd1c-581ef3ab833c" alt="Node.js" class="w-10 h-10 object-contain"/>
+          <img src="https://github.com/user-attachments/assets/24b59d89-79df-4530-bd1c-581ef3ab833c" alt="Node.js"
+            class="w-10 h-10 object-contain" />
           <div>
             <div class="font-medium">Node.js</div>
             <div class="text-xs text-gray-500">Backend</div>
@@ -309,7 +418,8 @@
         </div>
 
         <div class="p-3 card rounded-lg flex items-center gap-3">
-          <img src="https://github.com/user-attachments/assets/9312afce-fdb6-4c76-8c69-06d653442e55" alt="FastAPI" class="w-10 h-10 object-contain  rounded-[50%]"/>
+          <img src="https://github.com/user-attachments/assets/9312afce-fdb6-4c76-8c69-06d653442e55" alt="FastAPI"
+            class="w-10 h-10 object-contain  rounded-[50%]" />
           <div>
             <div class="font-medium">FastAPI</div>
             <div class="text-xs text-gray-500">API</div>
@@ -317,23 +427,26 @@
         </div>
 
         <div class="p-3 card rounded-lg flex items-center gap-3">
-          <img src="https://github.com/user-attachments/assets/9607e176-a6fc-4e15-a39b-b73b8b2f7654" alt="Android" class="w-10 h-10 object-contain"/>
+          <img src="https://github.com/user-attachments/assets/9607e176-a6fc-4e15-a39b-b73b8b2f7654" alt="Android"
+            class="w-10 h-10 object-contain" />
           <div>
             <div class="font-medium">Android</div>
             <div class="text-xs text-gray-500">Mobile</div>
           </div>
         </div>
 
-         <div class="p-3 card rounded-lg flex items-center gap-3">
-          <img src="https://github.com/user-attachments/assets/f9cbbeef-0807-4183-8235-b75862c117d5" alt="Android" class="w-10 h-10 object-contain"/>
+        <div class="p-3 card rounded-lg flex items-center gap-3">
+          <img src="https://github.com/user-attachments/assets/f9cbbeef-0807-4183-8235-b75862c117d5" alt="Android"
+            class="w-10 h-10 object-contain" />
           <div>
             <div class="font-medium">MongoDB</div>
             <div class="text-xs text-gray-500">Database</div>
           </div>
         </div>
 
-         <div class="p-3 card rounded-lg flex items-center gap-3">
-          <img src="https://github.com/user-attachments/assets/65d9f987-d03d-4bd6-afb0-9eaf4511feb6" alt="Android" class="w-10 h-10 object-contain"/>
+        <div class="p-3 card rounded-lg flex items-center gap-3">
+          <img src="https://github.com/user-attachments/assets/65d9f987-d03d-4bd6-afb0-9eaf4511feb6" alt="Android"
+            class="w-10 h-10 object-contain" />
           <div>
             <div class="font-medium">Postgress</div>
             <div class="text-xs text-gray-500">Database</div>
@@ -347,21 +460,27 @@
       <h2 class="text-xl font-semibold mb-6 text-center">Achievements</h2>
       <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
         <div class="card p-3 rounded-lg flex flex-col items-center">
-          <img src="https://github.com/user-attachments/assets/7bbc55f7-84d8-4a2e-a819-703768e735f7" alt="SIH Winner" class="w-full h-24 object-cover rounded-md mb-2"/>
+          <img src="https://github.com/user-attachments/assets/7bbc55f7-84d8-4a2e-a819-703768e735f7" alt="SIH Winner"
+            class="w-full h-24 object-cover rounded-md mb-2" />
           <div class="text-sm font-medium">Smart India Hackathon — Winner</div>
         </div>
         <div class="card p-3 rounded-lg flex flex-col items-center">
-          <img src="https://media.licdn.com/dms/image/v2/D4D22AQFEneXpslcdZQ/feedshare-shrink_800/feedshare-shrink_800/0/1708670465130?e=1762992000&v=beta&t=hO9lDiXp0wSWuspKYo6H7L9Hn9GrhQhps7QpZFN1FDw" alt="CodeVista" class="w-full h-24 object-cover rounded-md mb-2"/>
+          <img
+            src="https://media.licdn.com/dms/image/v2/D4D22AQFEneXpslcdZQ/feedshare-shrink_800/feedshare-shrink_800/0/1708670465130?e=1762992000&v=beta&t=hO9lDiXp0wSWuspKYo6H7L9Hn9GrhQhps7QpZFN1FDw"
+            alt="CodeVista" class="w-full h-24 object-cover rounded-md mb-2" />
           <div class="text-sm font-medium">TANTRA Hackathon — 1st Place</div>
         </div>
 
         <div class="card p-3 rounded-lg flex flex-col items-center">
-          <img src="https://media.licdn.com/dms/image/v2/D4D22AQHoelNo-nUfrg/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1719226942432?e=1762992000&v=beta&t=idpESJs4ae37CVaiDtA6pALQUK6l_3efDtFE20iKbEk" alt="CodeVista" class="w-full h-24 object-cover rounded-md mb-2"/>
+          <img
+            src="https://media.licdn.com/dms/image/v2/D4D22AQHoelNo-nUfrg/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1719226942432?e=1762992000&v=beta&t=idpESJs4ae37CVaiDtA6pALQUK6l_3efDtFE20iKbEk"
+            alt="CodeVista" class="w-full h-24 object-cover rounded-md mb-2" />
           <div class="text-sm font-medium">Peer Counselor</div>
         </div>
 
         <div class="card p-3 rounded-lg flex flex-col items-center">
-          <img src="https://github.com/user-attachments/assets/4ffab36d-a914-4738-a438-d841923afbd8" alt="CodeVista" class="w-full h-24 object-cover rounded-md mb-2"/>
+          <img src="https://github.com/user-attachments/assets/4ffab36d-a914-4738-a438-d841923afbd8" alt="CodeVista"
+            class="w-full h-24 object-cover rounded-md mb-2" />
           <div class="text-sm font-medium">CodeVista — 1st Place</div>
         </div>
       </div>
@@ -375,6 +494,9 @@
     <i id="iconMoon" class="fa-solid fa-moon hidden"></i>
   </div>
 
+
+
+
   <script>
     // IntersectionObserver reveals
     const reveals = document.querySelectorAll('.reveal');
@@ -382,7 +504,7 @@
       entries.forEach(e => {
         if (e.isIntersecting) e.target.classList.add('show');
       });
-    }, {threshold: 0.12});
+    }, { threshold: 0.12 });
     reveals.forEach(r => io.observe(r));
 
     // theme toggle logic (persist in localStorage)
@@ -403,7 +525,7 @@
       localStorage.setItem('theme', t);
     }
 
-    (function initTheme(){
+    (function initTheme() {
       const saved = localStorage.getItem('theme');
       if (saved) return setTheme(saved);
       const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -417,8 +539,9 @@
 
     // small keyboard shortcut: "g" -> projects
     document.addEventListener('keydown', (e) => {
-      if (e.key.toLowerCase() === 'g') document.getElementById('projects').scrollIntoView({behavior:'smooth'});
+      if (e.key.toLowerCase() === 'g') document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
     });
   </script>
 </body>
+
 </html>
