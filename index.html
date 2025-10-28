@@ -10,13 +10,12 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Font Awesome (for UI bits) -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    integrity="sha512-aGv6sPU2GyVz1QW5FyArsK5wF3Sl2bZ2E5ZzT5bAGyQqRmL7F5IejR8T4cAxh6j7+Zr5TnDEnH0AAvGJdZg9Rw=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+ <!-- ✅ Updated Font Awesome 6.6.0 CDN -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+/>
+
 
   <style>
     :root{
@@ -63,7 +62,11 @@
       background: var(--bg);
       border: 1px solid rgba(15,23,42,0.05);
       backdrop-filter: blur(6px);
+        color: var(--accent);
     }
+
+
+
 
     
   </style>
@@ -92,10 +95,10 @@
           <img src="https://cdn-icons-png.flaticon.com/128/3536/3536505.png" alt="LinkedIn" class="w-9 h-9 rounded-md float-icon" />
         </a>
         <a href="https://github.com/SimpleCyber" target="_blank" class="group inline-flex items-center gap-2">
-          <img src="https://cdn-icons-png.flaticon.com/128/25/25657.png" alt="GitHub" class="w-9 h-9 rounded-md float-icon" />
+          <img src="https://cdn-icons-png.flaticon.com/128/25/25657.png" alt="GitHub" class="w-9 h-9 rounded-md float-icon bg-gray-50" />
         </a>
         <a href="https://twitter.com" target="_blank" class="group inline-flex items-center gap-2">
-          <img src="https://cdn-icons-png.flaticon.com/128/5968/5968830.png" alt="X / Twitter" class="w-9 h-9 rounded-md float-icon" />
+          <img src="https://cdn-icons-png.flaticon.com/128/5968/5968830.png" alt="X / Twitter" class="w-9 h-9 rounded-md float-icon bg-gray-50" />
         </a>
         <a href="https://www.youtube.com/@dearcoderr" target="_blank" class="group inline-flex items-center gap-2">
           <img src="https://cdn-icons-png.flaticon.com/128/3938/3938037.png" alt="YouTube" class="w-9 h-9 rounded-md float-icon" />
@@ -104,10 +107,10 @@
 
       <!-- small CTA row -->
       <div class="mt-8 flex items-center justify-center gap-3">
-        <a href="https://drive.google.com/file/d/11MmeWSTksKlsJfVN04H2gkS2glJYucQC/view?usp=sharing"  target="_blank" download class="inline-flex items-center gap-2 px-4 py-2 rounded-md border text-sm hover:bg-gray-50">
+        <a href="https://drive.google.com/file/d/11MmeWSTksKlsJfVN04H2gkS2glJYucQC/view?usp=sharing"  target="_blank" download class="inline-flex items-center gap-2 px-4 py-2 rounded-md border text-sm hover:bg-gray-50 hover:text-black">
           <i class="fa-solid fa-download"></i> Resume
         </a>
-        <a href="#projects" class="inline-flex items-center gap-2 px-4 py-2 rounded-md border text-sm hover:bg-gray-50">
+        <a href="#projects" class="inline-flex items-center gap-2 px-4 py-2 rounded-md border text-sm hover:bg-gray-50 hover:text-black">
           <i class="fa-solid fa-arrow-down"></i> View Projects
         </a>
       </div>
@@ -121,12 +124,12 @@
         <!-- DevHub -->
         <a href="https://devhub1.vercel.app/" target="_blank" class="card p-4 rounded-xl flex items-center gap-3 hover:shadow-lg transition reveal">
           <img src="https://github.com/user-attachments/assets/c6ecfaa2-2f12-4b29-9aac-d161741c399f"
-               alt="DevHub logo" class="w-12 h-12 object-contain rounded-md rot-r-sm app-icon"/>
+               alt="DevHub logo" class="w-12 h-12 object-contain rounded-md rot-r-sm app-icon "/>
           <div class="flex-1 text-left">
             <div class="font-medium">DevHub</div>
             <div class="text-xs text-gray-500 truncate">devhub1.vercel.app</div>
           </div>
-          <i class="fa-solid fa-arrow-up-right-from-square text-gray-400"></i>
+          
         </a>
 
         <!-- HabitX -->
@@ -136,7 +139,7 @@
             <div class="font-medium">HabitX</div>
             <div class="text-xs text-gray-500 truncate">habit-builder-rho.vercel.app</div>
           </div>
-          <i class="fa-solid fa-arrow-up-right-from-square text-gray-400"></i>
+          
         </a>
 
         <!-- Workwise -->
@@ -146,7 +149,7 @@
             <div class="font-medium">Workwise</div>
             <div class="text-xs text-gray-500 truncate">workwise-sigma.vercel.app</div>
           </div>
-          <i class="fa-solid fa-arrow-up-right-from-square text-gray-400"></i>
+          
         </a>
 
         <!-- Imposter -->
@@ -157,7 +160,7 @@
             <div class="font-medium">Imposter</div>
             <div class="text-xs text-gray-500 truncate">imposter-r3q6.onrender.com</div>
           </div>
-          <i class="fa-solid fa-arrow-up-right-from-square text-gray-400"></i>
+          
         </a>
 
         <!-- RentX -->
@@ -167,7 +170,7 @@
             <div class="font-medium">RentX</div>
             <div class="text-xs text-gray-500 truncate">rentx-khaki.vercel.app</div>
           </div>
-          <i class="fa-solid fa-arrow-up-right-from-square text-gray-400"></i>
+          
         </a>
 
         <!-- Movie App -->
@@ -177,7 +180,7 @@
             <div class="font-medium">Movie App</div>
             <div class="text-xs text-gray-500 truncate">movie404.vercel.app</div>
           </div>
-          <i class="fa-solid fa-arrow-up-right-from-square text-gray-400"></i>
+          
         </a>
       </div>
     </section>
@@ -271,7 +274,7 @@
       <div class="grid grid-cols-3 sm:grid-cols-4 gap-4">
 
         <div class="p-3 card rounded-lg flex items-center gap-3">
-          <img src="https://github.com/user-attachments/assets/a7124a86-7219-4639-a31d-1ab267e4ca68" alt="React" class="w-10 h-10 object-contain"/>
+          <img src="https://github.com/user-attachments/assets/a7124a86-7219-4639-a31d-1ab267e4ca68" alt="React" class="w-10 h-10 object-contain bg-gray-50 border rounded-[50%]"/>
           <div>
             <div class="font-medium">Next</div>
             <div class="text-xs text-gray-500">Frontend</div>
@@ -306,7 +309,7 @@
         </div>
 
         <div class="p-3 card rounded-lg flex items-center gap-3">
-          <img src="https://github.com/user-attachments/assets/9312afce-fdb6-4c76-8c69-06d653442e55" alt="FastAPI" class="w-10 h-10 object-contain"/>
+          <img src="https://github.com/user-attachments/assets/9312afce-fdb6-4c76-8c69-06d653442e55" alt="FastAPI" class="w-10 h-10 object-contain  rounded-[50%]"/>
           <div>
             <div class="font-medium">FastAPI</div>
             <div class="text-xs text-gray-500">API</div>
